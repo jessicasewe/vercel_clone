@@ -7,7 +7,6 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-black text-white">
       <Navbar />
-      {/* Add a padding-top to the RectangleBox to account for the fixed navbar */}
       <div className="pt-16">
         {" "}
         <RectangleBox />

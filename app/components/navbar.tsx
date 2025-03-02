@@ -68,7 +68,7 @@ export default function Navbar() {
     };
   }, []);
 
-  const handleTabHover = (e: any) => {
+  const handleTabHover = (e: React.MouseEvent<HTMLElement> | null) => {
     if (!e) {
       setHoverStyles((prev) => ({ ...prev, opacity: 0 }));
       return;
@@ -79,7 +79,6 @@ export default function Navbar() {
     if (!navRef.current) return;
     const navRect = navRef.current.getBoundingClientRect();
 
-    // setActiveTab(target.dataset.tab);
     setHoverStyles({
       opacity: 1,
       left: rect.left - navRect.left,

@@ -17,7 +17,7 @@ import { Analytics } from "./analytics";
 
 export const GridBox = () => {
   return (
-    <div className="pl-60 justify-center relative">
+    <div className="pl-60 justify-center relative mt-8">
       <div className="w-5xl h-[100vh] bg-black border border-neutral-800 relative">
         <div className="absolute inset-0 z-0">
           {Array.from({ length: 9 }).map((_, rowIndex) => (
@@ -85,7 +85,7 @@ export const GridBox = () => {
         </div>
       </div>
 
-      <div className="w-5xl h-[30vh] bg-black border border-neutral-800 mt-12 flex items-center justify-center">
+      <div className="w-5xl h-[30vh] bg-black border border-neutral-800 flex items-center justify-center">
         <div className="text-center">
           <h2 className="text-2xl font-bold text-white mb-4 flex items-center justify-center">
             Develop with your favorite tools
