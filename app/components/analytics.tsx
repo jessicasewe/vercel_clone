@@ -1,30 +1,40 @@
 "use client";
-import ReactApexChart from "react-apexcharts";
+import dynamic from "next/dynamic";
 import { ApexOptions } from "apexcharts";
 import { useState, useEffect } from "react";
 import { ChartLine } from "lucide-react";
 
-export const Analytics = () => {
-  const generateRandomData = () => {
-    return Array.from({ length: 12 }, (_, i) => {
-      const baseValue = 1000 + i * 300;
-      const randomVariation = Math.random() * 500 - 250;
-      return Math.round(baseValue + randomVariation);
-    });
-  };
+// Dynamically import ReactApexChart with SSR disabled
+const ReactApexChart = dynamic(() => import("react-apexcharts"), {
+  ssr: false,
+});
 
-  const [series, setSeries] = useState([
-    {
-      name: "Views",
-      data: generateRandomData(),
-    },
-    {
-      name: "Clicks",
-      data: generateRandomData().map((val) => Math.round(val * 0.6)),
-    },
-  ]);
+export const Analytics = () => {
+  const [series, setSeries] = useState<{ name: string; data: number[] }[]>([]);
 
   useEffect(() => {
+    // Generate random data only on the client side
+    const generateRandomData = () => {
+      return Array.from({ length: 12 }, (_, i) => {
+        const baseValue = 1000 + i * 300;
+        const randomVariation = Math.random() * 500 - 250;
+        return Math.round(baseValue + randomVariation);
+      });
+    };
+
+    const initialSeries = [
+      {
+        name: "Views",
+        data: generateRandomData(),
+      },
+      {
+        name: "Clicks",
+        data: generateRandomData().map((val) => Math.round(val * 0.6)),
+      },
+    ];
+
+    setSeries(initialSeries);
+
     const interval = setInterval(() => {
       setSeries([
         {
@@ -117,12 +127,15 @@ export const Analytics = () => {
       </h5>
 
       <div className="relative w-full h-full mt-4">
-        <ReactApexChart
-          options={options}
-          series={series}
-          type="line"
-          height={230}
-        />
+        {/* Render ReactApexChart only if series data is available */}
+        {series.length > 0 && (
+          <ReactApexChart
+            options={options}
+            series={series}
+            type="line"
+            height={230}
+          />
+        )}
       </div>
     </div>
   );
