@@ -17,8 +17,6 @@ import {
   Smile,
   Compass,
   Puzzle,
-  MessageSquare,
-  Phone,
   PenTool,
   Notebook,
   PanelsTopLeft,
@@ -34,7 +32,7 @@ import turboo from "../../public/turboo.png";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState(null);
+  //   const [activeTab, setActiveTab] = useState(null);
   const [hoverStyles, setHoverStyles] = useState<{
     opacity: number;
     left: number;
@@ -72,7 +70,6 @@ export default function Navbar() {
 
   const handleTabHover = (e: any) => {
     if (!e) {
-      setActiveTab(null);
       setHoverStyles((prev) => ({ ...prev, opacity: 0 }));
       return;
     }
@@ -82,7 +79,7 @@ export default function Navbar() {
     if (!navRef.current) return;
     const navRect = navRef.current.getBoundingClientRect();
 
-    setActiveTab(target.dataset.tab);
+    // setActiveTab(target.dataset.tab);
     setHoverStyles({
       opacity: 1,
       left: rect.left - navRect.left,
@@ -534,7 +531,7 @@ export default function Navbar() {
                                 Resource Center
                               </p>
                               <p className="text-neutral-400 text-xs mt-1 group-hover/item:text-gray-300 transition-colors">
-                                Today's best practices
+                                Today&apos;s best practices
                               </p>
                             </div>
                           </Link>

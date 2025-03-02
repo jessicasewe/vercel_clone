@@ -1,12 +1,9 @@
 import {
-  Plus,
   Globe,
   GitBranch,
   Terminal,
   MessageCircle,
   RotateCcw,
-  Shield,
-  Briefcase,
   ShieldCheck,
   Building,
 } from "lucide-react";
@@ -21,15 +18,12 @@ import { Analytics } from "./analytics";
 export const GridBox = () => {
   return (
     <div className="pl-60 justify-center relative">
-      {/* First Box */}
       <div className="w-5xl h-[100vh] bg-black border border-neutral-800 relative">
-        {/* Grid Lines - Positioned Behind */}
         <div className="absolute inset-0 z-0">
-          {/* Horizontal Lines */}
           {Array.from({ length: 9 }).map((_, rowIndex) => (
             <div
               key={`row-${rowIndex}`}
-              className={`absolute w-full h-px bg-neutral-800 ${
+              className={`absolute w-full h-px bg-neutral-900 ${
                 rowIndex > 1 && rowIndex < 5 ? "opacity-0" : ""
               }`}
               style={{
@@ -38,11 +32,10 @@ export const GridBox = () => {
             ></div>
           ))}
 
-          {/* Vertical Lines */}
           {Array.from({ length: 13 }).map((_, colIndex) => (
             <div
               key={`col-${colIndex}`}
-              className="absolute h-full w-px bg-neutral-800"
+              className="absolute h-full w-px bg-neutral-900"
               style={{
                 left: `${(colIndex / 12) * 100}%`,
                 clipPath:
@@ -58,20 +51,15 @@ export const GridBox = () => {
           ))}
         </div>
 
-        {/* Content Layer - Positioned Above Grid */}
         <div className="relative z-10 flex flex-col items-center justify-center mt-40">
-          {/* Bold Text */}
           <h1 className="text-4xl font-bold text-white text-center mb-4">
             Your complete platform for the web.
           </h1>
-
-          {/* Normal Text */}
           <p className="text-lg text-neutral-400 text-center mb-8">
             Vercel provides the developer tools and cloud infrastructure
             <br /> to build, scale, and secure a faster, more personalized web.
           </p>
 
-          {/* Buttons */}
           <div className="flex space-x-4">
             <button className="bg-white text-black px-6 py-2 rounded-full font-medium hover:bg-gray-200 transition-colors">
               <span className="mr-2">▲</span> Start Deploying
@@ -81,7 +69,6 @@ export const GridBox = () => {
             </button>
           </div>
 
-          {/* Triangle Image with Fade Effect */}
           <div className="flex justify-center w-full mt-8">
             <Image
               src={Triangle}
@@ -98,9 +85,7 @@ export const GridBox = () => {
         </div>
       </div>
 
-      {/* Additional Empty Box with Text */}
       <div className="w-5xl h-[30vh] bg-black border border-neutral-800 mt-12 flex items-center justify-center">
-        {/* Text Content */}
         <div className="text-center">
           <h2 className="text-2xl font-bold text-white mb-4 flex items-center justify-center">
             Develop with your favorite tools
@@ -240,17 +225,12 @@ export const GridBox = () => {
       </div>
       <div className="w-5xl h-[30vh] bg-black border border-neutral-800 mt-8 flex items-center relative">
         <div className="absolute inset-0 flex">
-          {/* First dashed line */}
           <div className="w-1/3 h-full border-r border-dashed border-neutral-700"></div>
 
-          {/* Second dashed line */}
           <div className="w-1/3 h-full border-r border-dashed border-neutral-700"></div>
 
-          {/* Third section remains open */}
           <div className="w-1/3 h-full"></div>
         </div>
-
-        {/* Left-aligned content covering two boxes */}
         <div className="absolute w-2/3 pl-8 text-white">
           <h2 className="text-xl font-semibold">
             <span className="font-bold text-white">Ready to deploy?</span>
@@ -273,7 +253,6 @@ export const GridBox = () => {
           </div>
         </div>
 
-        {/* Third box content */}
         <div className="absolute w-1/3 right-0 pl-8 text-white ">
           <h2 className="text-medium font-normal">
             <span className="text-medium font-normal">
@@ -285,7 +264,6 @@ export const GridBox = () => {
             </span>
           </h2>
 
-          {/* Button */}
           <div className="mt-4">
             <button className="px-5 py-2 border border-neutral-700 rounded-full text-white bg-black hover:bg-neutral-900 transition">
               Explore Enterprise
