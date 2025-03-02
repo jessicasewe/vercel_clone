@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 // Particle component for the dust effect
 interface ParticleProps {
-  id: string; // Changed from number to string
+  id: string;
   x: number;
   y: number;
   size: number;
@@ -39,23 +39,18 @@ const Particle = ({ x, y, size, opacity, duration }: ParticleProps) => {
 export default function RectangleBox() {
   const [particles, setParticles] = useState<ParticleProps[]>([]);
   const containerRef = useRef<HTMLDivElement>(null);
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
 
-  // Generate particles on component mount and periodically
   useEffect(() => {
     if (!containerRef.current) return;
 
-    // Get the dimensions of the container
     const rect = containerRef.current.getBoundingClientRect();
-    setDimensions({ width: rect.width, height: rect.height });
 
     // Function to generate new particles
     const generateParticles = () => {
       const newParticles: ParticleProps[] = [];
-      const particleCount = 30; // Adjust for more/less particles
+      const particleCount = 30;
 
       for (let i = 0; i < particleCount; i++) {
-        // Determine if particle should be on horizontal or vertical edge
         const isHorizontal = Math.random() > 0.5;
 
         let x, y;
@@ -68,7 +63,7 @@ export default function RectangleBox() {
         }
 
         newParticles.push({
-          id: crypto.randomUUID(), // Ensure unique key
+          id: crypto.randomUUID(),
           x,
           y,
           size: Math.random() * 3 + 1,
@@ -105,7 +100,7 @@ export default function RectangleBox() {
             size={particle.size}
             opacity={particle.opacity}
             duration={particle.duration}
-            id={""}
+            id={particle.id}
           />
         ))}
 
