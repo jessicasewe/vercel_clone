@@ -17,8 +17,6 @@ const Particle = ({ x, y, size, opacity, duration }: ParticleProps) => {
     <motion.div
       className="absolute rounded-full bg-white"
       style={{
-        x,
-        y,
         width: size,
         height: size,
         opacity,
@@ -41,7 +39,8 @@ export default function RectangleBox() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!containerRef.current) return;
+    // Ensure this code only runs in the browser
+    if (typeof window === "undefined" || !containerRef.current) return;
 
     const rect = containerRef.current.getBoundingClientRect();
 
@@ -52,8 +51,8 @@ export default function RectangleBox() {
 
       for (let i = 0; i < particleCount; i++) {
         const isHorizontal = Math.random() > 0.5;
-
         let x, y;
+
         if (isHorizontal) {
           x = Math.random() * rect.width;
           y = Math.random() > 0.5 ? -5 : rect.height + 5;
@@ -63,7 +62,7 @@ export default function RectangleBox() {
         }
 
         newParticles.push({
-          id: crypto.randomUUID(),
+          id: `${Math.random()}`, // Avoids using crypto.randomUUID() to prevent SSR issues
           x,
           y,
           size: Math.random() * 3 + 1,

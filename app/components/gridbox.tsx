@@ -85,7 +85,7 @@ export const GridBox = () => {
         </div>
       </div>
 
-      <div className="w-5xl h-[30vh] bg-black border border-neutral-800 flex items-center justify-center">
+      <div className="w-5xl h-[30vh] bg-black border border-neutral-800 flex items-center justify-center mt-8">
         <div className="text-center">
           <h2 className="text-2xl font-bold text-white mb-4 flex items-center justify-center">
             Develop with your favorite tools

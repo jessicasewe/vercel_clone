@@ -1,6 +1,6 @@
 "use client";
-
 import Link from "next/link";
+import { useState, useRef, useEffect } from "react";
 import {
   ChevronDown,
   Globe,
@@ -23,7 +23,6 @@ import {
   BriefcaseBusiness,
   ChartNoAxesColumn,
 } from "lucide-react";
-import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import vercel from "../../public/vercel-logotype-dark.png";
 import next from "../../public/next.png";
@@ -32,7 +31,6 @@ import turboo from "../../public/turboo.png";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  //   const [activeTab, setActiveTab] = useState(null);
   const [hoverStyles, setHoverStyles] = useState<{
     opacity: number;
     left: number;
@@ -54,6 +52,9 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
+    // Ensure this code only runs in the browser
+    if (typeof window === "undefined") return;
+
     const handleScroll = () => {
       if (window.scrollY > 0) {
         setIsScrolled(true);
